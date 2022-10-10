@@ -32,7 +32,7 @@ var qual = document.getElementsByName("c");
         "gender":gender
       });
 
-      fetch(' https://registration-eta.vercel.app/',{
+      fetch('https://registration-eta.vercel.app/register',{
         method: 'post',
         body:data,
         headers: {
