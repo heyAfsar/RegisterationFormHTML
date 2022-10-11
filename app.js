@@ -54,7 +54,6 @@ var qual = document.getElementsByName("c");
         "gender":gender
       });
 
-      console.log(data);
       fetch(' https://registration-eta.vercel.app/register',{
         method: 'post',
         body:data,
