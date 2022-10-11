@@ -1,5 +1,6 @@
 
 document.getElementById('submit').addEventListener('click', function() {
+  
 let name = document.getElementById("name");
 let dob = document.getElementById("dob");
 let email = document.getElementById("email");
@@ -8,6 +9,7 @@ let city = document.getElementById("city");
 let institute = document.getElementById("institute");
 var gen = document.getElementsByName("gender");
 var qual = document.getElementsByName("c");
+
 
 
     if (name.value == 0) {
@@ -68,7 +70,7 @@ var qual = document.getElementsByName("c");
       });
     }
 
-      window.location.href="success.html";
+      window.location.href="/success.html";
 
       (function(){
         let fields = document.getElementsByTagName("input");
