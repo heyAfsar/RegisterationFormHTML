@@ -11,23 +11,23 @@
   <div class="container">
     <div class="title">Registration</div>
     <div class="content">
-      <form action="#">
+      <form id="popupform" action="#">
         <div class="user-details">
           <div class="input-box">
-            <span class="details">Full Name</span>
-            <input type="text" id="name" placeholder="Enter your name" required>
+            <span class="details">Full Name<span style="color:red">*</span></span>
+            <input type="text" id="name" placeholder="Enter your name" required />
           </div>
           <div class="input-box">
-            <span class="details">Date of Birth</span>
+            <span class="details">Date of Birth<span style="color:red">*</span></span>
             <input type="date" id="dob" required>
           </div>
           <div class="input-box">
-            <span class="details">Email</span>
-            <input type="text" id="email" placeholder="Enter your email" required>
+            <span class="details">Email<span style="color:red">*</span></span>
+            <input type="email" id="email" placeholder="Enter your email" aria-required="true" />
           </div>
           <div class="input-box">
-            <span class="details">Phone Number</span>
-            <input type="text" id="phone" placeholder="Enter your number" required>
+            <span class="details">Phone Number<span style="color:red">*</span></span>
+            <input type="number" id="phone" placeholder="Enter your number" required>
           </div>
           <div class="input-box">
             <span class="details">Present city</span>
@@ -90,6 +90,6 @@
     </div>
   </div>
 
-  <script src="app.js"></script>
+   <script src="/app.js"></script>
 </body>
 </html>
