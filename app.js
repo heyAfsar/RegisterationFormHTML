@@ -3,52 +3,36 @@ const formClass = document.getElementsByClassName("form-control");
 that = this;
 
 function isFormEmpty(){
+  var err = false;
   for (let i = 0; i < requiredElements.length; i++) {
     if(requiredElements[i].value == ""){
+      err=true;
       requiredElements[i].classList.add("ValidationError");
       requiredElements[i].classList.remove("ValidationSuccess");
     }else{
       requiredElements[i].classList.remove("ValidationError");
       requiredElements[i].classList.add("ValidationSuccess");
     }
-    
   }
+
+  return err;
 }
 
 document.getElementById('submit').addEventListener('click', function(e) {
 
-that.isFormEmpty();
+var err = that.isFormEmpty();
+if(err){
+  alert("Please Enter The Required Data");
+  return;
+}
 let username = document.getElementById("name");
 let dob = document.getElementById("dob");
 let email = document.getElementById("email");
 let phone = document.getElementById("phone");
 let city = document.getElementById("city");
 let institute = document.getElementById("institute");
-var gen = document.getElementsByName("gender");
 var qual = document.getElementsByName("c");
-const form = document.getElementById("form");
 
-
-  for(let i = 0; i<formClass.length;i++){
-    // var span = that.getElementByXpath('//*[contains(@class,"form-control")]/span[text()]')
-    // var input = that.getElementByXpath('//*[contains(@class,"form-control")]/input')
-    var span = document.querySelector('div'); 
-    span.classList.contains('form-control')
-    debugger;
-    var input = that.getElementByXpath('//*[contains(@class,"form-control")]/input')
-    var message = span.textContent;
-    if(input.classList.contains("ValidationError")){
-      alert(`Please Enter A Valid ${message}`);
-      return;
-    }
-  }
- 
-    for(let i = 0; i<gen.length; i++){
-        if(gen[i].checked){
-            var gender  = gen[i].value;
-            
-        }
-    }
     for(let i = 0; i<qual.length; i++){
         if(qual[i].checked){
             var qualification  = qual[i].value;
@@ -63,10 +47,10 @@ const form = document.getElementById("form");
         "city":city.value,
         "institute":institute.value,
         "qualification":qualification,
-        "gender":gender
       });
 
-return;
+
+      // fetch('http://localhost:9000/register',{
       fetch('https://registration-eta.vercel.app/register',{
         method: 'post',
         body:data,
@@ -74,7 +58,19 @@ return;
             'Content-Type':'application/json'
         }
       }).then(function(response) {
-        return response.text;
+        window.location.href="/success.html";
+        // window.location.href="/success.html";
+        (function(){
+          let fields = document.getElementsByTagName("input");
+          for(let i =0;i<fields.length;i++){
+              fields[i].value="";
+          }
+        })();
+        var button = document.getElementById("submit")
+        button.value = "Update Response";
+
+        // return response.text;
+
       }).then(function(text) {
         console.log(text);
       }).catch(function(error) {
@@ -82,14 +78,7 @@ return;
       });
     // }
 
-      window.location.href="/success.html";
-
-      (function(){
-        let fields = document.getElementsByTagName("input");
-        for(let i =0;i<fields.length;i++){
-            fields[i].value="";
-        }
-      })();
+     
 })
 
 function getElementByXpath(path) {
@@ -103,6 +92,12 @@ function validate(oEvent){
    },
    "phone": function(){
     return new RegExp(/^[+0-9]*[0-9]+$/);
+   },
+   "email": function(){
+    return new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
+   },
+   "institute": function(){
+    return new RegExp(/^([A-Za-z]+\s)*[a-zA-Z]+$/);
    }
   };
   
