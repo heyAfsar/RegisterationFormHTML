@@ -44,6 +44,17 @@ body{
   justify-content: space-between;
   margin: 20px 0 12px 0;
 }
+.form-control.error input{
+  border-color: #e74c3c !important;
+
+}
+.ValidationError{  
+  border: 2px solid #e74c3c !important;
+}
+.ValidationSuccess{  
+  border: 2px solid #0db455 !important;
+}
+
 form .user-details .input-box{
   margin-bottom: 15px;
   width: calc(100% / 2 - 20px);

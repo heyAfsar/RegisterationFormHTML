@@ -1,7 +1,24 @@
+const requiredElements = document.getElementsByClassName("isRequired");
+const formClass = document.getElementsByClassName("form-control");
+that = this;
 
-document.getElementById('submit').addEventListener('click', function() {
-  
-let name = document.getElementById("name");
+function isFormEmpty(){
+  for (let i = 0; i < requiredElements.length; i++) {
+    if(requiredElements[i].value == ""){
+      requiredElements[i].classList.add("ValidationError");
+      requiredElements[i].classList.remove("ValidationSuccess");
+    }else{
+      requiredElements[i].classList.remove("ValidationError");
+      requiredElements[i].classList.add("ValidationSuccess");
+    }
+    
+  }
+}
+
+document.getElementById('submit').addEventListener('click', function(e) {
+
+that.isFormEmpty();
+let username = document.getElementById("name");
 let dob = document.getElementById("dob");
 let email = document.getElementById("email");
 let phone = document.getElementById("phone");
@@ -9,27 +26,22 @@ let city = document.getElementById("city");
 let institute = document.getElementById("institute");
 var gen = document.getElementsByName("gender");
 var qual = document.getElementsByName("c");
+const form = document.getElementById("form");
 
 
-
-    if (name.value == 0) {
-      window.alert("please enter your name");
-      return false;
+  for(let i = 0; i<formClass.length;i++){
+    // var span = that.getElementByXpath('//*[contains(@class,"form-control")]/span[text()]')
+    // var input = that.getElementByXpath('//*[contains(@class,"form-control")]/input')
+    var span = document.querySelector('div'); 
+    span.classList.contains('form-control')
+    debugger;
+    var input = that.getElementByXpath('//*[contains(@class,"form-control")]/input')
+    var message = span.textContent;
+    if(input.classList.contains("ValidationError")){
+      alert(`Please Enter A Valid ${message}`);
+      return;
     }
-    else if(dob.value == 0) {
-        window.alert("please enter your date of birth");
-        return false;
-      }
-    else if(phone.value == 0) {
-        window.alert("please enter your contact number");
-        return false;
-      }
-    else if(email.value == 0) {
-        window.alert("please enter your emaili");
-        return false;
-      }
-    else{
-    
+  }
  
     for(let i = 0; i<gen.length; i++){
         if(gen[i].checked){
@@ -44,7 +56,7 @@ var qual = document.getElementsByName("c");
     }
     
     const data = JSON.stringify({
-        "name":name.value,
+        "name":username.value,
         "dob":dob.value,
         "email":email.value,
         "phone":phone.value,
@@ -54,7 +66,7 @@ var qual = document.getElementsByName("c");
         "gender":gender
       });
 
-
+return;
       fetch('https://registration-eta.vercel.app/register',{
         method: 'post',
         body:data,
@@ -68,7 +80,7 @@ var qual = document.getElementsByName("c");
       }).catch(function(error) {
         console.log(error);
       });
-    }
+    // }
 
       window.location.href="/success.html";
 
@@ -78,6 +90,29 @@ var qual = document.getElementsByName("c");
             fields[i].value="";
         }
       })();
-}); 
+})
 
+function getElementByXpath(path) {
+  return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+}
 
+function validate(oEvent){
+  var helper = {
+   "name": function(){
+    return new RegExp(/^([A-Za-z]+\s)*[a-zA-Z]+$/);
+   },
+   "phone": function(){
+    return new RegExp(/^[+0-9]*[0-9]+$/);
+   }
+  };
+  
+  // var element = document.getElementById(id),validation;
+  var element = oEvent.target;
+  if(!element.value.match(helper[element.id]())){
+    element.classList.add("ValidationError");
+    element.classList.remove("ValidationSuccess");
+  }else{
+    element.classList.remove("ValidationError");
+    element.classList.add("ValidationSuccess");
+  }
+}
