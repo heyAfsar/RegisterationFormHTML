@@ -173,12 +173,12 @@ form .input-box span.details{
   opacity: 1;
 }
 
-/* (X) DOES NOT QUITE MATTER */
+/* (X) DOES NOT QUITE MATTER 
 html, body {
   margin: 0;
   padding: 0;
 }
-
+*/
  @media(max-width: 584px){
  .container{
   max-width: 100%;
