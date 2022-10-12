@@ -9,10 +9,9 @@ body{
   height: 100%;
   display: flex;
   justify-content: center;
-  color:#cc9934;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(135deg, #ecee61, #ffcf70);
+  background: linear-gradient(135deg, #e4e679, #f2b438);
 }
 .container{
   max-width: 700px;
@@ -34,7 +33,7 @@ body{
   left: 0;
   bottom: 0;
   height: 3px;
-  width: 30px;
+  width: 45%;
   border-radius: 5px;
   background: linear-gradient(135deg, #ffffff, #f5a700);
 }
@@ -44,6 +43,17 @@ body{
   justify-content: space-between;
   margin: 20px 0 12px 0;
 }
+.form-control.error input{
+  border-color: #e74c3c !important;
+
+}
+.ValidationError{  
+  border: 2px solid #e74c3c !important;
+}
+.ValidationSuccess{  
+  border: 2px solid #0db455 !important;
+}
+
 form .user-details .input-box{
   margin-bottom: 15px;
   width: calc(100% / 2 - 20px);
@@ -111,14 +121,16 @@ form .input-box span.details{
  }
  form .button{
    height: 45px;
-   margin: 35px 0
+   margin: 35px 0;
  }
  form .button input{
    height: 100%;
    width: 100%;
    border-radius: 5px;
+   box-shadow: 3px 3px 7px #d0a259ab ;
    border: none;
    color: #fff;
+   text-shadow: 1px 1px 2px #79633c;
    font-size: 25px;
    font-weight: 500;
    letter-spacing: 1px;
