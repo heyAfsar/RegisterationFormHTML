@@ -91,7 +91,7 @@ function validate(oEvent){
     return new RegExp(/^([A-Za-z]+\s)*[a-zA-Z]+$/);
    },
    "phone": function(){
-    return new RegExp(/^[+0-9]*[0-9]+$/);
+    return new RegExp(/((((\+)?91){1})*(0{1})?)?[9876]{1}[0-9]{9}/);
    },
    "email": function(){
     return new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
