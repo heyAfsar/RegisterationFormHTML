@@ -1,95 +1,92 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <!---<title> Responsive Registration Form | CodingLab </title>--->
-    <link rel="stylesheet" href="style.css">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Registration Form</title>
+   <head>
+      <meta charset="UTF-8" />
+      <link rel="stylesheet" href="style.css" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Crashtech Registration</title>
    </head>
-<body>
-  <div class="container">
-    <div class="title">Registration</div>
-    <div class="content">
-      <form id="popupform" action="#">
-        <div class="user-details">
-          <div class="input-box">
-            <span class="details">Full Name<span style="color:red">*</span></span>
-            <input type="text" id="name" placeholder="Enter your name" required />
-          </div>
-          <div class="input-box">
-            <span class="details">Date of Birth<span style="color:red">*</span></span>
-            <input type="date" id="dob" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Email<span style="color:red">*</span></span>
-            <input type="email" id="email" placeholder="Enter your email" aria-required="true" />
-          </div>
-          <div class="input-box">
-            <span class="details">Phone Number<span style="color:red">*</span></span>
-            <input type="number" id="phone" placeholder="Enter your number" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Present city</span>
-            <input type="text" id="city" placeholder="Enter your city name" >
-          </div>
-          <div class="input-box">
-            <span class="details">School/College/University</span>
-            <input type="text" id="institute" placeholder="institute name">
-          </div>
-        </div>
-        <div class="qualifications">
-            <input type="radio" name="c" value = "10th" id="dott-1">
-            <input type="radio" name="c" value = "12th" id="dott-2">
-            <input type="radio" name="c" value = "UG" id="dott-3">
-            <input type="radio" name="c" value = "PG" id="dott-4">
-            <span class="qualification-title">Qualification</span>
-            <div class="category">
-              <label for="dott-1">
-              <span class="dot a"></span>
-              <span class="qualification">10th</span>
-            </label>
-            <label for="dott-2">
-              <span class="dot b"></span>
-              <span class="qualification">12th</span>
-            </label>
-            <label for="dott-3">
-              <span class="dot c"></span>
-              <span class="qualification">UG</span>
-              </label>
-            <label for="dott-4">
-             <span class="dot d"></span>
-             <span class="qualification">PG</span>
-             </label>
-            </div>
-          </div>
-        <div class="gender-details">
-          <input type="radio" name="gender" value = "male" id="dot-1">
-          <input type="radio" name="gender" value = "female" id="dot-2">
-          <input type="radio" name="gender" value = "null" id="dot-3">
-          <span class="gender-title">Gender</span>
-          <div class="category">
-            <label for="dot-1">
-            <span class="dot one"></span>
-            <span class="gender">Male</span>
-          </label>
-          <label for="dot-2">
-            <span class="dot two"></span>
-            <span class="gender">Female</span>
-          </label>
-          <label for="dot-3">
-            <span class="dot three"></span>
-            <span class="gender">Prefer not to say</span>
-            </label>
-          </div>
-        </div>
-        <div class="button">
-          <input type="button" id="submit" value="Register">
-        </div>
-      </form>
-    </div>
-  </div>
-
-   <script src="/app.js"></script>
-</body>
+   <body>
+      <div class="container">
+         <div class="title">Welcome To Crashtech!<BR></div>
+         <div class="content">
+            <form id="form" name="form" action="#">
+               <div class="user-details">
+                  <div class="input-box form-control">
+                     <span class="details">Full Name<span style="color: red">*</span></span>
+                     <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        onkeyup="validate(event)"
+                        class="isRequired"
+                        />
+                  </div>
+                  <div class="input-box">
+                     <span class="details">Date of Birth<span style="color: red">*</span></span>
+                     <input class="isRequired" type="date" id="dob"/>
+                  </div>
+                  <div class="input-box form-control">
+                     <span class="details">Email<span style="color: red">*</span></span>
+                     <input
+                        type="email"
+                        class="isRequired"
+                        id="email"
+                        placeholder="Enter your email"
+                        onkeyup="validate(event)"
+                        />
+                  </div>
+                  <div class="input-box form-control">
+                     <span class="details">Phone Number<span style="color: red">*</span>
+                     </span>
+                     <input
+                        id="phone"
+                        placeholder="Enter your number"
+                        onkeydown="validate(event)"
+                        maxlength="13"
+                        class="isRequired"
+                        />
+                  </div>
+                  <div class="input-box">
+                     <span class="details">School/College/University<span style="color: red">*</span></span>
+                     <input type="text" id="institute" placeholder="institute name" class="isRequired"  onkeyup="validate(event)"/>
+                  </div>
+                  <div class="input-box">
+                     <span class="details">Present city</span>
+                     <input type="text" id="city" placeholder="Enter your city name" />
+                  </div>
+               </div>
+               <div class="qualifications">
+                  <input type="radio" name="c" value="10th" id="dott-1" />
+                  <input type="radio" name="c" value="12th" id="dott-2" />
+                  <input type="radio" name="c" value="UG" id="dott-3" />
+                  <input type="radio" name="c" value="PG" id="dott-4" />
+                  <span class="qualification-title">Latest Qualification</span>
+                  <div class="category">
+                     <label for="dott-1">
+                     <span class="dot a"></span>
+                     <span class="qualification">10th</span>
+                     </label>
+                     <label for="dott-2">
+                     <span class="dot b"></span>
+                     <span class="qualification">12th</span>
+                     </label>
+                     <label for="dott-3">
+                     <span class="dot c"></span>
+                     <span class="qualification">UG</span>
+                     </label>
+                     <label for="dott-4">
+                     <span class="dot d"></span>
+                     <span class="qualification">PG</span>
+                     </label>
+                  </div>
+               </div>
+               <div class="button">
+                  <input type="button" id="submit" value="Register" />
+               </div>
+            </form>
+         </div>
+      </div>
+      <script src="/app.js"></script>
+   </body>
 </html>
