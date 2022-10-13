@@ -82,6 +82,9 @@ img {
   border-color: #e74c3c !important;
 
 }
+.unValidated{
+  border: 1px solid #f5a700;
+}
 .ValidationError{  
   border: 2px solid #e74c3c !important;
 }
@@ -177,6 +180,40 @@ form .input-box span.details{
   /* transform: scale(0.99); */
   background: linear-gradient(-135deg, #ece984, #f59700);
   }
+
+  /* (A) FULL SCREEN WRAPPER */
+#spinner {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 0.2s;
+}
+
+/* (B) CENTER LOADING SPINNER */
+#spinner img {
+  position: absolute;
+  top: 40%; left: 50%;
+  transform: translate(-50%);
+}
+
+/* (C) SHOW & HIDE */
+#spinner {
+  visibility: hidden;
+  opacity: 0;
+}
+#spinner.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* (X) DOES NOT QUITE MATTER 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+*/
  @media(max-width: 584px){
  .container{
   max-width: 100%;

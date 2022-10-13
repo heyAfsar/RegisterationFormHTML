@@ -1,3 +1,5 @@
+
+
 const requiredElements = document.getElementsByClassName("isRequired");
 const formClass = document.getElementsByClassName("form-control");
 that = this;
@@ -15,6 +17,21 @@ function isFormEmpty(){
     }
   }
 
+  return err;
+}
+
+function resetForm(){
+  debugger;
+  var err = false;
+  let fields = document.getElementsByTagName("input");
+  for(let i =0;i<fields.length;i++){
+      fields[i].value="";
+      fields[i].classList.add("unValidated");
+      fields[i].classList.remove("ValidationSuccess");
+    }
+  var button = document.getElementById("submit")
+  button.classList.remove("unValidated");
+  button.value = "Update Response";
   return err;
 }
 
@@ -49,7 +66,7 @@ var qual = document.getElementsByName("c");
         "qualification":qualification,
       });
 
-
+      that.show();
       // fetch('http://localhost:9000/register',{
       fetch('https://registration-eta.vercel.app/register',{
         method: 'post',
@@ -58,19 +75,10 @@ var qual = document.getElementsByName("c");
             'Content-Type':'application/json'
         }
       }).then(function(response) {
+        that.hide();
         window.location.href="/success.html";
         // window.location.href="/success.html";
-        (function(){
-          let fields = document.getElementsByTagName("input");
-          for(let i =0;i<fields.length;i++){
-              fields[i].value="";
-          }
-        })();
-        var button = document.getElementById("submit")
-        button.value = "Update Response";
-
-        // return response.text;
-
+        that.resetForm();
       }).then(function(text) {
         console.log(text);
       }).catch(function(error) {
@@ -110,4 +118,13 @@ function validate(oEvent){
     element.classList.remove("ValidationError");
     element.classList.add("ValidationSuccess");
   }
+}
+
+
+function show () {
+  document.getElementById("spinner").classList.add("show");
+}
+
+function hide () {
+  document.getElementById("spinner").classList.remove("show");
 }
