@@ -5,6 +5,8 @@
   box-sizing: border-box;
   font-family: 'Poppins',sans-serif;
 }
+
+
 body{
   height: 100%;
   display: flex;
@@ -13,6 +15,35 @@ body{
   padding: 10px;
   background: linear-gradient(135deg, #e4e679, #f2b438);
 }
+/* .header {
+  height:20px;
+  font-size: 32px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: inline-block;
+} */
+
+img {
+  position: relative;
+  top: 0;
+  left: 0;
+  align-items: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 60px;
+  margin-bottom: -6px;
+}
+
+.title-text{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  white-space: nowrap;
+}
+
 .container{
   max-width: 700px;
   width: 100%;
@@ -26,14 +57,18 @@ body{
   font-size: 25px;
   font-weight: 500;
   position: relative;
+  align-items: center;
+  margin: auto;
+  height: 90px;
+  margin-bottom: 3.5vh;
 }
 .container .title::before{
   content: "";
   position: absolute;
-  left: 0;
+  left: auto;
   bottom: 0;
   height: 3px;
-  width: 45%;
+  width: 59%;
   border-radius: 5px;
   background: linear-gradient(135deg, #ffffff, #f5a700);
 }
@@ -183,6 +218,12 @@ html, body {
  .container{
   max-width: 100%;
 }
+.container .title{
+  height: 92px;
+}
+/* img{
+  height: 55px !important;
+} */
 form .user-details .input-box{
     margin-bottom: 15px;
     width: 100%;
@@ -202,4 +243,23 @@ form .user-details .input-box{
   .container .content .category{
     flex-direction: column;
   }
+  .container .title{
+    height: 92px !important;
+}
+  /* img{
+    height: 55px !important;
+  } */
+}
+
+@media(max-width:380px){
+  .container .title{
+    font-size: 24px !important;
+    height: 90px !important;
+  }
+}
+@media(max-width:280px){
+  .container .title{
+    font-size: 18px !important;
+    height: 82px !important;
+}
 }
