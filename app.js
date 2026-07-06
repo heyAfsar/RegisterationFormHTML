@@ -48,23 +48,31 @@ let email = document.getElementById("email");
 let phone = document.getElementById("phone");
 let city = document.getElementById("city");
 let institute = document.getElementById("institute");
+let classInput = document.getElementById("class");
+let sectionInput = document.getElementById("section");
 var qual = document.getElementsByName("c");
 
-    for(let i = 0; i<qual.length; i++){
-        if(qual[i].checked){
-            var qualification  = qual[i].value;
-        }
+let qualificationValue = "";
+for(let i = 0; i<qual.length; i++){
+    if(qual[i].checked){
+        qualificationValue  = qual[i].value;
     }
-    
-    const data = JSON.stringify({
-        "name":username.value,
-        "dob":dob.value,
-        "email":email.value,
-        "phone":phone.value,
-        "city":city.value,
-        "institute":institute.value,
-        "qualification":qualification,
-      });
+}
+let classSection = classInput.value.trim() + (sectionInput.value.trim() ? ("-" + sectionInput.value.trim()) : "");
+let qualification = qualificationValue;
+if(classSection !== "") {
+    qualification = qualificationValue ? (qualificationValue + " " + classSection) : classSection;
+}
+
+const data = JSON.stringify({
+    "name":username.value,
+    "dob":dob.value,
+    "email":email.value,
+    "phone":phone.value,
+    "city":city.value,
+    "institute":institute.value,
+    "qualification":qualification,
+  });
 
       that.show();
       // fetch('http://localhost:9000/register',{
